@@ -4,7 +4,11 @@ This repository contains the official implementation of LRI as described in the 
 
 ## Introduction
 This work systematically studies interpretable Geometric Deep Learning (GDL) models by proposing a framework **Learnable Randomness Injection (LRI)** and **four datasets with ground-truth interpretation labels** from real-world scientific applications.
+
 We study the interpretability in GDL from the perspectives of **existence importance** and **location importance** of points, and instantiated LRI with LRI-Bernoulli and LRI-Gaussian to test the two types of importance, respectively. Fig. 1 shows the architecture of LRI.
+
+The intuition is that if the existence of some points is important, then imposing large Bernoulli randomness on their existence will greatly affect the prediction loss; while if the geometric locations of some points are important, imposing large Gaussian randomness on their coordinates should also affect the prediction loss significantly. Therefore, to achieve great prediction accuracy, LRI will denoise those important points, and thus the learned randomness level measures the importance of the points.
+
 
 <p align="center"><img src="./data/arch.png" width=85% height=85%></p>
 <p align="center"><em>Figure 1.</em> The architectures of LRI-Bernoulli (top) and LRI-Gaussian (bottom). </p>
