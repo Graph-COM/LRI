@@ -1,9 +1,9 @@
 <h1 align="center">Learnable Randomness Injection (LRI)</h1>
 
-This repository contains the official implementation of LRI as described in the paper: [Interpretable Geometric Deep Learning via Learnable Randomness Injection]() by Siqi Miao, Yunan Luo, Mia Liu, and Pan Li.
+This repository contains the official implementation of LRI as described in the paper: [Interpretable Geometric Deep Learning via Learnable Randomness Injection](https://www.google.com/search?q=Interpretable+Geometric+Deep+Learning+via+Learnable+Randomness+Injection) by Siqi Miao, Yunan Luo, Mia Liu, and Pan Li.
 
 ## Introduction
-This work systematically studies interpretable Geometric Deep Learning (GDL) models by proposing a framework **Learnable Randomness Injection (LRI)** and **four datasets with ground-truth interpretation labels** from real-world scientific applications.
+This work systematically studies interpretable Geometric Deep Learning (GDL) models by proposing a framework **Learnable Randomness Injection (LRI)** and **four datasets with ground-truth interpretation labels** from real-world scientific applications in Particle Physics and Biochemistry.
 
 We study the interpretability in GDL from the perspectives of **existence importance** and **location importance** of points, and instantiated LRI with LRI-Bernoulli and LRI-Gaussian to test the two types of importance, respectively. Fig. 1 shows the architecture of LRI.
 
