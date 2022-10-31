@@ -1,4 +1,5 @@
-# LRI
+<h1 align="center">Learnable Randomness Injection (LRI)</h1>
+
 This repository contains the official implementation of LRI as described in the paper: [Interpretable Geometric Deep Learning via Learnable Randomness Injection]() by Siqi Miao, Yunan Luo, Mia Liu, and Pan Li.
 
 ## Introduction
@@ -17,7 +18,7 @@ cd ./src/datasets
 python synmol.py
 ```
 
-All datasets are also available to download from Zenodo manually: https://doi.org/10.5281/zenodo.7265547. Fig. 2 shows the illustrations of the four datasets. We will update the documentation of the datasets with more details soon.
+All datasets are also available to download from Zenodo manually: https://doi.org/10.5281/zenodo.7265547. Fig. 2 provides the illustrations of the four datasets, and Tab. 1 shows the statistics of them. We will update the description of each dataset with more details in `README.md` soon.
 
 <p align="center"><img src="./data/datasets.png" width=85% height=85%></p>
 <p align="center"><em>Figure 2.</em> Illustrations of the four scientific datasets in this work to study interpretable GDL models. </p>
@@ -35,26 +36,27 @@ All datasets are also available to download from Zenodo manually: https://doi.or
 ## Installation
 We have tested our code on `Python 3.9` with `PyTorch 1.12.1`, `PyG 2.0.4` and `CUDA 11.3`. Please follow the following steps to create a virtual environment and install the required packages.
 
-Clone the repository:
+Step 1: Clone the repository
 ```
 git clone https://github.com/Graph-COM/LRI.git
 cd LRI
 ```
 
-Create a virtual environment:
+Step 2: Create a virtual environment
 ```
 conda create --name lri python=3.9 -y
 conda activate lri
 ```
 
-Install dependencies:
+Step 3: Install dependencies
 ```
 conda install -y pytorch==1.12.1 torchvision cudatoolkit=11.3 -c pytorch
 pip install torch-scatter==2.0.9 torch-sparse==0.6.14 torch-cluster==1.6.0 torch-geometric==2.0.4 -f https://data.pyg.org/whl/torch-1.12.0+cu113.html
 pip install -r requirements.txt
 ```
 
-
+<!-- ## Running Examples
+TODO -->
 
 ## Reproducing Results
 Use the following command to train a model:
