@@ -32,7 +32,6 @@ optimizer:
   attn_wd: 1.0e-5
   emb_lr: 1.0e-3
   emb_wd: 1.0e-5
-  do_adamw: false
 
 model:
   egnn:
@@ -57,18 +56,26 @@ model:
     act_type: relu
     pool: add
 
-
-# Default hyperparameters are tuned for dgcnn.
-# If the tuned hyperparameters for other backbone models are different, they will be commented on the right.
-
 lri_bern:
-  epochs: 50
-  warmup: 50
-  final_r: 0.5
-  info_loss_coef: 0.01         # pointtrans: 1.0, egnn: 0.1
+  dgcnn:
+    epochs: 50
+    warmup: 50
+    final_r: 0.5
+    info_loss_coef: 0.01
+  pointtrans:
+    epochs: 50
+    warmup: 50
+    final_r: 0.5
+    info_loss_coef: 1.0
+  egnn:
+    epochs: 50
+    warmup: 50
+    final_r: 0.5
+    info_loss_coef: 0.1
+
+  # not tuned
   one_encoder: false
   attn_constraint: smooth_min
-
   temperature: 1.0
   decay_interval: 10
   decay_r: 0.1
@@ -81,14 +88,26 @@ lri_bern:
   act_type: relu
 
 lri_gaussian:
-  epochs: 50
-  warmup: 50
-  pos_coef: 1.2            # pointtrans: 0.9
-  info_loss_coef: 1.0      # pointtrans: 0.1, egnn: 0.01
+  dgcnn:
+    epochs: 50
+    warmup: 50
+    pos_coef: 1.2
+    info_loss_coef: 1.0
+  pointtrans:
+    epochs: 50
+    warmup: 50
+    pos_coef: 0.9
+    info_loss_coef: 0.1
+  egnn:
+    epochs: 50
+    warmup: 50
+    pos_coef: 1.2
+    info_loss_coef: 0.01
+
+  # not tuned
   kr: 7
   one_encoder: false
   attn_constraint: smooth_min
-
   covar_dim: 3
   pred_loss_coef: 1.0
   pred_lr: 1.0e-3
@@ -111,11 +130,18 @@ gradgeo:
   pred_wd: 0
 
 bernmask_p:
+  dgcnn:
+    size_loss_coef: 0.1
+    mask_ent_loss_coef: 1.0
+  pointtrans:
+    size_loss_coef: 0.1
+    mask_ent_loss_coef: 0.1
+  egnn:
+    size_loss_coef: 0.01
+    mask_ent_loss_coef: 0.1
+
   epochs: 50
   warmup: 100
-  size_loss_coef: 0.1             # egnn: 0.01
-  mask_ent_loss_coef: 1.0         # pointtrans: 0.1, egnn: 0.1
-
   temp: [1.0, 1.0]
   pred_loss_coef: 1.0
   pred_lr: 0
@@ -125,12 +151,21 @@ bernmask_p:
   act_type: relu
 
 bernmask:
+  dgcnn:
+    size_loss_coef: 0.01
+    mask_ent_loss_coef: 0.01
+    iter_lr: 1.0e-1
+  pointtrans:
+    size_loss_coef: 1.0
+    mask_ent_loss_coef: 0.01
+    iter_lr: 1.0e-1
+  egnn:
+    size_loss_coef: 0.1
+    mask_ent_loss_coef: 0.1
+    iter_lr: 1.0e-1
+
   epochs: 1
   warmup: 100
-  size_loss_coef: 0.01            # pointtrans: 1.0, egnn: 0.1
-  mask_ent_loss_coef: 0.01        # egnn: 0.1
-  iter_lr: 1.0e-1
-
   iter_per_sample: 500
   pred_loss_coef: 1.0
   pred_lr: 0
@@ -140,11 +175,18 @@ bernmask:
   act_type: relu
 
 pointmask:
+  dgcnn:
+    t: 0.2
+    kl_loss_coef: 0.01
+  pointtrans:
+    t: 0.2
+    kl_loss_coef: 0.01
+  egnn:
+    t: 0.8
+    kl_loss_coef: 0.1
+
   epochs: 100
   warmup: 0
-  t: 0.2                          # egnn: 0.8
-  kl_loss_coef: 0.01              # egnn: 0.1
-
   one_encoder: false
   covar_dim: 2  # MLP output 2 dims for mu and sigma
   pred_loss_coef: 1.0

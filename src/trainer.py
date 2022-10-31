@@ -181,6 +181,8 @@ def run_one_seed(dataset_name, method_name, model_name, cuda_id, seed, note, tim
     sub_dataset_name = '_' + dataset_name.split('_')[1] if len(dataset_name.split('_')) > 1 else ''
     config_path = Path('./configs') /  f'{config_name}.yml'
     config = yaml.safe_load((config_path).open('r'))
+    if config[method_name].get(model_name, False):
+        config[method_name].update(config[method_name][model_name])
     print('-' * 80), print('-' * 80)
     print(f'Config: ', json.dumps(config, indent=4))
 
@@ -201,7 +203,7 @@ def main():
     parser.add_argument('-m', '--method', type=str, help='method used', default='lri_gaussian')
     parser.add_argument('-b', '--backbone', type=str, help='backbone used', default='egnn')
     parser.add_argument('--cuda', type=int, help='cuda device id, -1 for cpu', default=-1)
-    parser.add_argument('--seed', type=int, help='backbone model used', default=0)
+    parser.add_argument('--seed', type=int, help='random seed', default=0)
     parser.add_argument('--note', type=str, help='note in log name', default='')
     args = parser.parse_args()
 

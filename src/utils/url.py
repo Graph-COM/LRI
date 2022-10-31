@@ -13,9 +13,9 @@ def decide_download(url, is_raw):
     d = ur.urlopen(url)
     size = int(d.info()["Content-Length"])/GBFACTOR
     if is_raw:
-        return input("Will you download %.3fGB raw files? (y/N)\n" % (size)).lower() == "y"
+        return input("Download %.3fGB raw files? Enter n if you want the processed data only. (y/n)\n" % (size)).lower() == "y"
     else:
-        return input("Will you download %.3fGB processed data to skip processing raw files? (y/N)\n" % (size)).lower() == "y"
+        return input("Download %.3fGB processed data to skip processing raw files? (y/n)\n" % (size)).lower() == "y"
 
 def makedirs(path):
     try:
