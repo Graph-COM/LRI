@@ -55,7 +55,7 @@ def get_eval_score(epoch, phase, log_dict, writer, warmup, batch):
             if writer is not None:
                 writer.add_scalar(f'warmup/{phase}/org_clf_acc', org_clf_acc, epoch)
                 writer.add_scalar(f'warmup/{phase}/org_clf_auc', org_clf_auc, epoch)
-        return desc, org_clf_acc, org_clf_auc, *[-1]*8
+        return [desc, org_clf_acc, org_clf_auc, *[-1]*8]
 
     # No warmup
     for k, v in log_dict.items():
@@ -73,7 +73,7 @@ def get_eval_score(epoch, phase, log_dict, writer, warmup, batch):
 
     desc = f'org_acc: {org_clf_acc:.3f}, msk_acc: {masked_clf_acc:.3f}, '
     if batch:
-        return desc, *[None]*10
+        return [desc, *[None]*10]
 
     org_clf_auc = roc_auc_score(clf_labels, record_dict['org_clf_logits'].sigmoid()) if not mul_class else 0
     desc += f'org_auc: {org_clf_auc:.3f}, '
