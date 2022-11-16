@@ -199,7 +199,7 @@ def run_one_seed(dataset_name, method_name, model_name, cuda_id, seed, note, tim
 def main():
     time = datetime.now().strftime("%m_%d_%Y-%H_%M_%S.%f")[:-3]
     parser = argparse.ArgumentParser(description='Train SAT')
-    parser.add_argument('-d', '--dataset', type=str, help='dataset used', default='acts_2T')
+    parser.add_argument('-d', '--dataset', type=str, help='dataset used', default='actstrack_2T')
     parser.add_argument('-m', '--method', type=str, help='method used', default='lri_gaussian')
     parser.add_argument('-b', '--backbone', type=str, help='backbone used', default='egnn')
     parser.add_argument('--cuda', type=int, help='cuda device id, -1 for cpu', default=-1)
