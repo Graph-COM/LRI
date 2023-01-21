@@ -1,9 +1,20 @@
 <h1 align="center">Learnable Randomness Injection (LRI)</h1>
+<p align="center">
+    <a href="https://arxiv.org/abs/2210.16966"><img src="https://img.shields.io/badge/-Paper-grey?logo=gitbook&logoColor=white" alt="Paper"></a>
+    <a href="https://github.com/Graph-COM/LRI"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github"></a>
+    <a href="https://openreview.net/forum?id=6u7mf9s2A9"> <img alt="License" src="https://img.shields.io/static/v1?label=Pub&message=ICLR%2723&color=blue"> </a>
+    <!-- <a href="https://github.com/Graph-COM/GSAT/blob/main/LICENSE"> <img alt="License" src="https://img.shields.io/github/license/Graph-Com/GSAT?color=blue"> </a>
+    <a href="https://icml.cc/virtual/2022/spotlight/17430"> <img src="https://img.shields.io/badge/Video-grey?logo=Kuaishou&logoColor=white" alt="Video"></a>
+    <a href="https://icml.cc/media/icml-2022/Slides/17430.pdf"> <img src="https://img.shields.io/badge/Slides-grey?&logo=MicrosoftPowerPoint&logoColor=white" alt="Slides"></a>
+    <a href="https://icml.cc/media/PosterPDFs/ICML%202022/a8acc28734d4fe90ea24353d901ae678.png"> <img src="https://img.shields.io/badge/Poster-grey?logo=airplayvideo&logoColor=white" alt="Poster"></a> -->
+</p>
+
 
 This repository contains the official implementation of LRI as described in the paper: [Interpretable Geometric Deep Learning via Learnable Randomness Injection](https://arxiv.org/abs/2210.16966) by Siqi Miao, Yunan Luo, Mia Liu, and Pan Li.
 
 ## News
-- Oct. 20, 2022: This paper will show up at NeurIPS 2022 [AI for Science](https://ai4sciencecommunity.github.io/neurips22.html) Workshop (review score 8/8/6)!
+- Jan. 21, 2023: This paper is accepted to [ICLR 2023](https://openreview.net/forum?id=6u7mf9s2A9)!
+- Oct. 20, 2022: This paper will show up at NeurIPS 2022 [AI for Science](https://ai4sciencecommunity.github.io/neurips22.html) Workshop!
 
 ## Introduction
 This work systematically studies interpretable Geometric Deep Learning (GDL) models by proposing a framework **Learnable Randomness Injection (LRI)** and **four datasets with ground-truth interpretation labels** from real-world scientific applications in Particle Physics and Biochemistry.
