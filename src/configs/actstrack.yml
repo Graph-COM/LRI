@@ -21,10 +21,10 @@ data:
     - deltapy
     - deltapz
     - deltae
-  feature_type: only_ones # only_pos or only_x or both_x_pos or only_ones
+  feature_type: only_pos # only_pos or only_x or both_x_pos or only_ones
 
 logging:
-  tensorboard: false
+  tensorboard: true
   topk: [12, 24, 30]
 
 optimizer:
@@ -54,7 +54,7 @@ model:
   dgcnn:
     n_layers: 4
     hidden_size: 64
-    dropout_p: 0.2
+    dropout_p: 0.0
     norm_type: batch
     act_type: relu
     pool: add
@@ -92,10 +92,10 @@ lri_bern:
 
 lri_gaussian:
   dgcnn:
-    epochs: 100
-    warmup: 200
-    pos_coef: 200.0
-    info_loss_coef: 0.01
+    epochs: 500
+    warmup: 100
+    pos_coef: 100.0
+    info_loss_coef: 10
   pointtrans:
     epochs: 100
     warmup: 200
@@ -109,13 +109,13 @@ lri_gaussian:
 
   # not tuned
   kr: 10
-  one_encoder: true
+  one_encoder: false
   attn_constraint: none
-  covar_dim: 3
+  covar_dim: 2
   pred_loss_coef: 1.0
-  pred_lr: 1.0e-3
+  pred_lr: 1.0e-8
   pred_wd: 1.0e-5
-  dropout_p: 0.2
+  dropout_p: 0.0
   norm_type: batch
   act_type: relu
 

@@ -55,9 +55,9 @@ class LRIGaussian(nn.Module):
 
         U = U[:, 2:].reshape(emb.shape[0], self.dim, self.dim)
         pred_sigma = sig1.reshape(-1, 1, 1) * U @ U.transpose(1, 2) + sig2.reshape(-1, 1, 1) * torch.eye(self.dim, device=self.device).reshape(-1, self.dim, self.dim)
-        pred_sigma = self.smooth_min(edge_index, pred_sigma, U, sig1, sig2) if self.attn_constraint == 'smooth_min' else pred_sigma
+        U = torch.linalg.cholesky(pred_sigma)
 
-        node_noise = self.sampling(U, do_sampling, sig1, sig2)
+        node_noise = self.sampling(U, do_sampling)
         masked_clf_logits = self.clf(data, node_noise=node_noise)
         original_clf_logits = self.clf(data)
 
@@ -65,11 +65,10 @@ class LRIGaussian(nn.Module):
 
         return loss, loss_dict, original_clf_logits, masked_clf_logits, -(pred_sigma.det()).reshape(-1), pred_sigma, node_noise
 
-    def sampling(self, U, do_sampling, sig1, sig2):
+    def sampling(self, U, do_sampling):
         if do_sampling:
-            epsilon_1 = torch.randn((U.shape[0], U.shape[2], 1), device=self.device)
-            epsilon_2 = torch.randn((U.shape[0], U.shape[2], 1), device=self.device)
-            z = sig1.sqrt() * (U @ epsilon_1).squeeze(-1) + sig2.sqrt() * epsilon_2.squeeze(-1)
+            epsilon = torch.randn((U.shape[0], U.shape[2], 1), device=self.device)
+            z = (U @ epsilon).squeeze(-1)
         else:
             z = None
         return z

@@ -219,9 +219,9 @@ def update_and_save_best_epoch_res(baseline, train_res, valid_res, test_res, met
     same_val_auc_but_better_val_loss = (valid_res[main_metric_idx] == metric_dict['metric/best_clf_valid']) and (valid_res[-1] < metric_dict['metric/best_clf_valid_loss'])
 
     # calc angle
-    # if (better_val_auc or same_val_auc_but_better_val_loss) and (epoch > 300 or warmup):
+    if (better_val_auc or same_val_auc_but_better_val_loss) and (epoch > 300 or warmup):
 
-    if better_val_auc or same_val_auc_but_better_val_loss:
+    # if better_val_auc or same_val_auc_but_better_val_loss:
         metric_dict = {'metric/best_clf_epoch': epoch, 'metric/best_clf_valid_loss': valid_res[-1],
                        'metric/best_clf_train': train_res[main_metric_idx], 'metric/best_clf_valid': valid_res[main_metric_idx], 'metric/best_clf_test': test_res[main_metric_idx],
                        'metric/best_x_roc_train': train_res[4], 'metric/best_x_roc_valid': valid_res[4], 'metric/best_x_roc_test': test_res[4],
@@ -234,8 +234,8 @@ def update_and_save_best_epoch_res(baseline, train_res, valid_res, test_res, met
         if model_dir is not None:
             save_checkpoint(baseline, model_dir, model_name='model' if not warmup else 'wp_model')
 
-    # if model_dir is not None:
-    #     save_checkpoint(baseline, model_dir, model_name=f'model_{epoch}' if not warmup else f'wp_model_{epoch}')
+    if model_dir is not None:
+        save_checkpoint(baseline, model_dir, model_name=f'model_{epoch}' if not warmup else f'wp_model_{epoch}')
 
     if writer is not None and not warmup:
         for metric, value in metric_dict.items():

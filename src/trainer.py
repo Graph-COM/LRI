@@ -38,10 +38,10 @@ def eval_one_batch(baseline, optimizer, data, epoch, warmup, phase, method_name)
         baseline.clf.eval()
 
         # calc angle
-        # do_sampling = True if phase == 'valid' and method_name == 'lri_gaussian' else False
+        do_sampling = True if phase == 'valid' and method_name == 'lri_gaussian' else False
 
         # BernMaskP
-        do_sampling = True if phase == 'valid' and method_name == 'bernmask_p' else False # we find this is better for BernMaskP
+        # do_sampling = True if phase == 'valid' and method_name == 'bernmask_p' else False # we find this is better for BernMaskP
         loss, loss_dict, org_clf_logits, masked_clf_logits, node_attn, covar_mat, node_noise = baseline.forward_pass(data, epoch, warmup=warmup, do_sampling=do_sampling)
         return loss_dict, to_cpu(org_clf_logits), to_cpu(masked_clf_logits), to_cpu(node_attn), to_cpu(covar_mat), to_cpu(node_noise)
 
