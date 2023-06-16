@@ -94,3 +94,14 @@ By adding `--cuda [GPU_id]` to the command, the code will run on the specified G
 The tuned hyperparameters for all backbone models and interpretation methods can be found in `./src/config`.
 
 
+## Reference
+
+If you find our paper and repo useful, please cite our paper:
+```bibtex
+@article{miao2023interpretable,
+  title       = {Interpretable Geometric Deep Learning via Learnable Randomness Injection},
+  author      = {Miao, Siqi and Luo, Yunan and Liu, Mia and Li, Pan},
+  journal     = {International Conference on Learning Representations},
+  year        = {2023}
+}
+```
